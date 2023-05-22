@@ -246,7 +246,8 @@ private:
 		TCHAR name[MAX_PATH], path[MAX_PATH];
 		DWORD r = GetTempPath(MAX_PATH, path);
 		if (r > MAX_PATH || !r ||
-			!GetTempFileName(path, TEXT("TMLXXXX"), 0, name)) return "";
+			!GetTempFileName(path, TEXT("TMLXXXX"), 0, name))
+				return "";
 		return string(name);
 	}
 #else
@@ -286,7 +287,7 @@ public:
 		if (!p || !n) return;
 		mm->close();
 	}
-	bool operator==(const memory_map_allocator& t) const {                
+	bool operator==(const memory_map_allocator& t) const {
 		return fn == t.fn && m == t.m && mm == t.mm && nommap==t.nommap;
 	}
 	bool operator!=(const memory_map_allocator& t) const {
@@ -299,5 +300,5 @@ private:
 	std::allocator<T> nommap;
 };
 
-} // 
+} // idni namespace
 #endif
